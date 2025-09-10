@@ -3,20 +3,29 @@ import 'dotenv/config';   // automatically loads .env
 
 import express from 'express';
 import mongoose from 'mongoose';
-
+import cors from "cors";
 import { router as userRoutes } from './routes/userRoutes.js';
 import { router as adminRoutes } from './routes/adminRoutes.js';
 import cookieParser from "cookie-parser";
 
 const app = express();
 
-// Middleware
+// ✅ 1. Enable CORS BEFORE routes
+app.use(
+  cors({
+    origin: "http://localhost:5173", 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true,   // allow cookies & headers
+  })
+);
+
+// ✅ 2. Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Mount routers
-app.use('/api/users', userRoutes);   // ✅ This is key
+// ✅ 3. Mount routers (AFTER middleware)
+app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5000;

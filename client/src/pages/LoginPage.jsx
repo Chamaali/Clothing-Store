@@ -13,56 +13,65 @@ function LoginPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLogin = async(e) =>{
+  const handleLogin = async (e) => {
     e.preventDefault()
     const loginData = {
       email: e.target.email.value,
-      password: e.target.password.value
+      password: e.target.password.value,
     }
-    
-    try{
-      const response = await loginUser(loginData)
+
+    try {
+      // ✅ CHANGE: use unwrap() to get clean response or throw error
+      const response = await loginUser(loginData).unwrap()
+
       console.log(response)
-      if(response.error) {
-        setMessage(response.error.data.message)
-      } 
-      else{
-        setMessage(response.data.message)
-        document.cookie = `token=${response.data.token}`
-        dispatch(userLogin())
-        setTimeout(()=>{
-        if(response.data.userRole === 'admin'){
+
+      setMessage(response.message)
+      document.cookie = `token=${response.token}`
+      dispatch(userLogin())
+
+      setTimeout(() => {
+        if (response.userRole === 'admin') {
           navigate('/dash_board')
-        }
-        else if(response.data.userRole === 'user'){
+        } else if (response.userRole === 'user') {
           navigate('/home')
         }
-      },2000)
-      }
-      
-    }
-    catch(err){
+      }, 2000)
+    } catch (err) {
+      // ✅ CHANGE: show proper error message
       console.error('Login failed:', err)
-    } 
+      setMessage(err?.data?.message || 'Login failed, try again')
+    }
   }
 
   return (
     <>
-    <NavBar />
+      <NavBar />
       <div className='flex flex-col gap-4 items-center justify-center w-full min-h-[92vh] '>
-        <div action="" className='min-w-[450px] border flex flex-col items-center p-5 gap-5 shadow-lg rounded-md max-sm:min-w-[360px] max-xsm:min-w-[300px]'>
+        <div className='min-w-[450px] border flex flex-col items-center p-5 gap-5 shadow-lg rounded-md max-sm:min-w-[360px] max-xsm:min-w-[300px]'>
           <h3 className='text-2xl font-semibold'>Login</h3>
-          <form onSubmit={handleLogin}  className='flex flex-col w-full gap-6'>
-            <SignupInput inputType='text' labelText='Email' labelName='email'  />
-            <SignupInput inputType='password' labelText='Password' labelName='password' type="password" />
+          {/* ✅ keep form with onSubmit */}
+          <form onSubmit={handleLogin} className='flex flex-col w-full gap-6'>
+            <SignupInput inputType='text' labelText='Email' labelName='email' />
+            <SignupInput inputType='password' labelText='Password' labelName='password' />
             <div className='flex justify-center'>
-              <button type="submit" className='self-center px-5 py-2 text-white duration-300 bg-black border rounded-lg hover:scale-95'>Login</button>
+              <button
+                type='submit'
+                className='self-center px-5 py-2 text-white duration-300 bg-black border rounded-lg hover:scale-95'
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>
-        <Link to='/signup'><p className='text-base '>Don't have an account? <button className='text-base font-bold text-buttonColor'>Signup</button></p></Link>
+        <Link to='/signup'>
+          <p className='text-base '>
+            Don't have an account?{' '}
+            <button className='text-base font-bold text-buttonColor'>Signup</button>
+          </p>
+        </Link>
       </div>
-      { message !== null && <MessageBox messageTxt={message} onClick={()=>setMessage(null)}/>}
+      {message !== null && <MessageBox messageTxt={message} onClick={() => setMessage(null)} />}
     </>
   )
 }

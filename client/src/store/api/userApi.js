@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 const userApi = createApi({
     reducerPath: 'user-api-reducer',
     tagTypes: ['data', 'cartData', 'orderData'],
-    baseQuery: fetchBaseQuery({baseUrl:'https://clothing-store-api.vercel.app/' ,credentials: 'include'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:5000/api/users' ,credentials: 'include'}),
     endpoints: builder => ({
         signupUser : builder.mutation({
             query:(body)=>({
