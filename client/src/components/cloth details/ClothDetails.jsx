@@ -29,7 +29,7 @@ function ClothDetails(prop) {
         </div>
         <div  className='flex flex-col gap-3 px-5 pt-2 pb-5'>
           <div className='flex gap-5'>
-            <img src={clothData.imgURL} alt={clothData.subTitle} className='w-40 h-40 rounded-md' />
+            <img src={clothData.image} alt={clothData.subTitle} className='w-40 h-40 rounded-md' />
             <div className='font-semibold '>
               <h3 className='text-red-700'>{clothData.title}</h3>
               <h4 className='text-blue-800 '>{clothData.subTitle}</h4>
@@ -41,7 +41,7 @@ function ClothDetails(prop) {
           </div>
           <div className='grid grid-cols-2 gap-8 max-md:gap-5'>
             <AddBuyButton color='blue' icon={buyIcon} btnTxt='Buy Now' onClick={()=>dispatch(addItem([{...clothData, total:clothData.price, quantity:1} ]))} link='/checkout'/>
-            <AddBuyButton color='pink' icon={cartIcon} btnTxt='Add To Cart' body={{clothId:clothData._id, imgURL:clothData.imgURL, title:clothData.title, subTitle:clothData.subTitle, price:clothData.price}} isAddTocart={true}/>
+            <AddBuyButton color='pink' icon={cartIcon} btnTxt='Add To Cart' body={{clothId:clothData._id, image:clothData.image, title:clothData.title, subTitle:clothData.subTitle, price:clothData.price}} isAddTocart={true}/>
           </div>
         </div> 
       </div>

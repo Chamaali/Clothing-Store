@@ -6,7 +6,7 @@ const clothSchema = mongoose.Schema({
     title: { type: String, require: true},
     subTitle: { type: String, require: true},
     price: { type: Number, require: true},
-    imgURL: { type: String, require: true},
+    image: { type: String, require: true},
     clothDiscription: { type: String, require: true},
 })
 

@@ -27,7 +27,7 @@ function CheckOutItems(prop) {
       {prop.items.map((item,index) => (
       <tr key={index} className='my-1 border-b'>
         <td className='flex gap-4 px-5 py-2 max-sm:flex-col max-sm:px-4'>
-          <img src={item.imgURL} alt={item.subTitle} className='object-fill w-20 h-20 max-md:w-10 max-md:h-10'/>
+          <img src={item.image} alt={item.subTitle} className='object-fill w-20 h-20 max-md:w-10 max-md:h-10'/>
           <div className='flex flex-col gap-2'>
             {/* <p>Moose</p> */}
             <p>{item.subTitle}</p>

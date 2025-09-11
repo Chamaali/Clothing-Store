@@ -63,7 +63,7 @@ function CartPage() {
               cartItems.cartDetails.map((item,index) =>(
                 <tr key={index} className='border-b '>
                   <td className='flex flex-col gap-4 px-5 py-2 max-sm:px-4'>
-                    <img src={item.imgURL} alt={item.subTitle} className='object-fill w-20 h-20 max-md:w-10 max-md:h-10'/>
+                    <img src={item.image} alt={item.subTitle} className='object-fill w-20 h-20 max-md:w-10 max-md:h-10'/>
                     <div className='flex flex-col gap-2'>
                       {/* <p>{item.title} </p> */}
                       <p>{item.subTitle} </p>

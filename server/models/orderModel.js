@@ -8,7 +8,7 @@ const orderSchema = mongoose.Schema({
                 {
                     subTitle: { type: String, require: true},
                     price: { type: Number, require: true},
-                    imgURL: { type: String, require: true},
+                    image: { type: String, require: true},
                     quantity: {type: Number, require: true},
                 }
             ],

@@ -5,7 +5,7 @@ const cartSchema = mongoose.Schema({
     cartDetails : [
         {
             clothId: { type: String, require: true},
-            imgURL: { type: String, require: true},
+            image: { type: String, require: true},
             title: { type: String, require: true},
             subTitle: { type: String, require: true},
             price: { type: Number, require: true},

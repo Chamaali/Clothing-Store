@@ -9,25 +9,25 @@ import { MdOutlinePayment } from "react-icons/md";
 
 export const storyData = [
     {
-        imgUrl: storyOne,
+        image: storyOne,
         icon: LiaShippingFastSolid,
         hedingText:'Free Shipping',
         descText:'Free shipping for order above $150'
     },
     {
-        imgUrl: storyTwo,
+        image: storyTwo,
         icon: RiMoneyDollarCircleLine,
         hedingText:'Money Guarantee',
         descText:'Withing 30 days for an exchange'
     },
     {
-        imgUrl: storyThree,
+        image: storyThree,
         icon: FiHeadphones,
         hedingText:'Online Support',
         descText:'24 hours a day, 7 days a week'
     },
     {
-        imgUrl: storyFour,
+        image: storyFour,
         icon:MdOutlinePayment,
         hedingText:'Flexible Payment',
         descText:'Pay with multiple credit cards'

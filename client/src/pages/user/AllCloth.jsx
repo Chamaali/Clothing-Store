@@ -30,7 +30,7 @@ function AllCloth() {
              typeData.clothByCategoryAndType.map((itemData)=>(
               <div key={itemData._id} className='flex flex-col gap-3 duration-300 bg-white rounded-md cursor-pointer h-max hover:scale-105 w-[200px]' onClick={()=> { setSeeDetail(true), setClothId(itemData._id) }}>
                 <div className='flex justify-center'>
-                  <img src={itemData.imgURL} alt={itemData.subTitle}  className='object-cover w-40 h-40 rounded-t-md max-sm:w-36 max-sm:h-36'/>
+                  <img src={itemData.image} alt={itemData.subTitle}  className='object-cover w-40 h-40 rounded-t-md max-sm:w-36 max-sm:h-36'/>
                 </div>
                 <div className='p-1 text-sm'>
                   <h3 className='text-red-700'>{itemData.title}</h3>
@@ -43,7 +43,7 @@ function AllCloth() {
           categoryData.clothsBycategory.map((itemData)=>(
           <div key={itemData._id} className='flex flex-col gap-3 duration-300 bg-white rounded-md cursor-pointer h-max hover:scale-105 w-[200px]' onClick={()=> { setSeeDetail(true), setClothId(itemData._id) }}>
             <div className='flex justify-center'>
-              <img src={itemData.imgURL} alt={itemData.subTitle}  className='object-cover w-40 h-40 rounded-t-md max-sm:w-36 max-sm:h-36'/>
+              <img src={itemData.image} alt={itemData.subTitle}  className='object-cover w-40 h-40 rounded-t-md max-sm:w-36 max-sm:h-36'/>
             </div>
             <div className='p-1 text-sm'>
               <h3 className='text-red-700'>{itemData.title}</h3>

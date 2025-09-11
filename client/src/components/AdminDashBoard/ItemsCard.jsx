@@ -24,7 +24,7 @@ function ItemsCard({details}) {
     <>
     <div className='flex flex-col justify-between gap-2 p-4 rounded-md shadow-lg bg-slate-50 max-lg:p-2'>
       <div className='flex justify-center'>
-        <img src={details.imgURL} alt={details.subTitle} className='object-cover w-40 h-40 rounded-md'/>
+        <img src={details.image} alt={details.subTitle} className='object-cover w-40 h-40 rounded-md'/>
       </div>
       <div className='text-sm '>
         <h3>{details.title}</h3>
