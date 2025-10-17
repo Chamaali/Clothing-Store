@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./ChatWidget.css";
 
-function ChatWidget() {
+function ChatWidget({ onClose }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -35,6 +36,10 @@ function ChatWidget() {
 
   return (
     <div className="chat-widget">
+      <div className="chat-header">
+        <div className="chat-title">Chat with us</div>
+        <button className="chat-close" onClick={() => onClose && onClose()}>✕</button>
+      </div>
       <div className="messages">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>

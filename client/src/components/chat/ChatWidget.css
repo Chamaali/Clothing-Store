@@ -1,13 +1,15 @@
 .chat-widget {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  bottom: 90px; /* sit above floating button */
+  right: 24px;
+  width: 320px;
+  height: 420px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
+  background: white;
+  z-index: 10000;
 }
 
 .messages {
@@ -48,4 +50,23 @@
   background-color: #007bff;
   color: white;
   border: none;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chat-title {
+  font-weight: 600;
+}
+
+.chat-close {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
