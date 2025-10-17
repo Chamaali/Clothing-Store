@@ -30,6 +30,42 @@
   text-align: left;
 }
 
+/* Slide-in animation for widget */
+.slide-in {
+  animation: slideUp 240ms cubic-bezier(.2,.9,.2,1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(18px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+
+/* Message fade-in */
+.fade-in {
+  animation: fadeIn 220ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+/* Typing dots */
+.typing { display:flex; gap:6px; align-items:center }
+.dot { width:8px; height:8px; background:#cbd5e1; border-radius:50%; display:inline-block; opacity:0.6 }
+.dot-1 { animation: blink 1s infinite 0s }
+.dot-2 { animation: blink 1s infinite 0.15s }
+.dot-3 { animation: blink 1s infinite 0.3s }
+@keyframes blink { 0%{transform:translateY(0);opacity:.3}50%{transform:translateY(-4px);opacity:1}100%{transform:translateY(0);opacity:.3} }
+
+/* Suggestions chips */
+.suggestions { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap }
+.suggestion-chip { background:#111827; color:white; padding:6px 10px; border-radius:999px; border:none; cursor:pointer; font-size:13px }
+.suggestion-chip:hover { transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.08) }
+
+/* Small toast for actions */
+.action-toast { position:fixed; right:110px; bottom:40px; background:#111827; color:#fff; padding:10px 14px; border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,0.15); z-index:11000; }
+
 .input-area {
   display: flex;
   padding: 10px;
