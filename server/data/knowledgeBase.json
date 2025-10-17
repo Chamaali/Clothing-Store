@@ -1,0 +1,28 @@
+[
+  {
+    "id": "contact_us",
+    "title": "Contact Us",
+    "aliases": [
+      "contact",
+      "contact us",
+      "customer support",
+      "support",
+      "help",
+      "phone",
+      "call"
+    ],
+    "text": "You can reach our support at +1-555-123-4567 or via the Contact Us page: https://example.com/contact. Support hours: Mon–Fri 9am–6pm."
+  },
+  {
+    "id": "returns",
+    "title": "Returns Policy",
+    "aliases": ["return", "refund", "exchange", "returns"],
+    "text": "You have 30 days to return items. See https://example.com/returns for details and the return form."
+  },
+  {
+    "id": "shipping",
+    "title": "Shipping Info",
+    "aliases": ["shipping", "delivery", "ship"],
+    "text": "Standard shipping takes 3-5 business days. Expedited shipping options are available at checkout. Track orders at https://example.com/track with your order ID."
+  }
+]

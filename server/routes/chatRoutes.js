@@ -1,7 +1,35 @@
 import express from "express";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const router = express.Router();
 let conversationHistory = [];
+
+// Load local knowledge base
+let KB = [];
+try {
+  // Resolve path relative to this file so it works regardless of cwd
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const kbPath = path.resolve(__dirname, '..', 'data', 'knowledgeBase.json');
+  const raw = fs.readFileSync(kbPath, 'utf8');
+  KB = JSON.parse(raw);
+  console.debug('[chatRoutes] Loaded KB entries:', KB.length);
+} catch (e) {
+  console.warn('[chatRoutes] Could not load KB:', e && e.message);
+}
+
+function findKbAnswer(message) {
+  const q = message.toLowerCase();
+  for (const item of KB) {
+    for (const alias of item.aliases || []) {
+      if (q.includes(alias)) return item.text;
+    }
+    if ((item.title || '').toLowerCase().split(' ').some(t => q.includes(t))) return item.text;
+  }
+  return null;
+}
 
 router.post("/send", async (req, res) => {
   try {
@@ -13,6 +41,13 @@ router.post("/send", async (req, res) => {
 
     // Save user message to conversation history
     conversationHistory.push({ role: "user", parts: [{ text: message }] });
+
+    // Check local KB first (quick, deterministic answers)
+    const kbReply = findKbAnswer(message);
+    if (kbReply) {
+      conversationHistory.push({ role: 'model', parts: [{ text: kbReply }] });
+      return res.json({ reply: kbReply, source: 'kb' });
+    }
 
     // If GEMINI API key is not provided, return a simple fallback reply so the chat can be tested locally
     if (!process.env.GEMINI_API_KEY) {
