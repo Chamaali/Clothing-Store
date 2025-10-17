@@ -22,6 +22,11 @@ function ChatWidget() {
       } catch (error) {
         console.error(error);
         setIsTyping(false);
+        const errorMessage = {
+          text: "Sorry, something went wrong.",
+          sender: "ai",
+        };
+        setMessages((prevMessages) => [...prevMessages, errorMessage]);
       }
     }
   };
