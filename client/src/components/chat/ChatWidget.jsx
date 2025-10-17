@@ -3,10 +3,12 @@ import React, { useState } from "react";
 function ChatWidget() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = async () => {
     if (input.trim()) {
-      setMessages([...messages, { text: input, sender: "user" }]);
+      // Add the user's message safely using functional update
+      setMessages((prev) => [...prev, { text: input, sender: "user" }]);
       setInput("");
       setIsTyping(true);
       try {
@@ -48,7 +50,7 @@ function ChatWidget() {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleSend()}
         />
-        <button onClick={handleSend}>Send</button>
+        <button onClick={handleSend} disabled={!input.trim()}>Send</button>
       </div>
     </div>
   );
