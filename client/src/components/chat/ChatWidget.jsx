@@ -16,13 +16,14 @@ function ChatWidget({ onClose }) {
       setInput("");
       setIsTyping(true);
       try {
+        console.debug("[ChatWidget] Sending message to /api/chat/send:", input);
         const response = await fetch("/api/chat/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: input }),
         });
 
-        // Handle non-JSON or non-OK responses gracefully
+  // Handle non-JSON or non-OK responses gracefully
         let data = null;
         if (response.ok) {
           try {
@@ -34,10 +35,22 @@ function ChatWidget({ onClose }) {
           }
         } else {
           const txt = await response.text().catch(() => null);
-          throw new Error(txt || `Request failed with status ${response.status}`);
+          // Try to parse possible JSON error
+          let serverMsg = txt;
+          try {
+            const jsonErr = JSON.parse(txt);
+            serverMsg = jsonErr.error || JSON.stringify(jsonErr);
+          } catch (e) {}
+          const errText = serverMsg || `Request failed with status ${response.status}`;
+          // Push server error into chat UI
+          setMessages((prev) => [...prev, { text: errText, sender: "ai" }]);
+          console.error(`[ChatWidget] Request failed: ${errText}`);
+          setIsTyping(false);
+          return;
         }
 
         const aiMessage = { text: data?.reply ?? "", sender: "ai" };
+        console.debug("[ChatWidget] Received reply:", aiMessage.text);
         setMessages((prevMessages) => [...prevMessages, aiMessage]);
         // If the AI returned a recommendation, add a small delay to simulate typing
         // (server may already do this but this improves perceived interactivity)

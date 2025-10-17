@@ -5,6 +5,7 @@ let conversationHistory = [];
 
 router.post("/send", async (req, res) => {
   try {
+    console.debug('[chatRoutes] POST /send - body:', req.body);
     const { message } = req.body;
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "Message is required" });
@@ -31,7 +32,7 @@ router.post("/send", async (req, res) => {
     try {
       const { GoogleGenerativeAI } = await import("@google/generative-ai");
       const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
       const chat = model.startChat({ history: conversationHistory });
 
       // Optionally use a different prompt when user asks for recommendations
@@ -52,8 +53,11 @@ router.post("/send", async (req, res) => {
     conversationHistory.push({ role: "model", parts: [{ text }] });
     res.json({ reply: text });
   } catch (error) {
-    console.error("Chat route error:", error);
-    res.status(500).json({ error: "Something went wrong" });
+    // Log full stack for debugging
+    console.error("Chat route error:", error && (error.stack || error));
+    // Return the error message to the client in development to aid debugging
+    const errMsg = (error && error.message) || "Something went wrong";
+    res.status(500).json({ error: errMsg });
   }
 });
 
