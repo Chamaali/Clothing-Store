@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import AdminDashBoard from './pages/admin/AdminDashBoard.jsx'
-import RootLayout from './RootLayout.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -25,28 +24,22 @@ import BlogPage from './pages/BlogPage.jsx'
 import BlogDetailPage from './pages/BlogDetailPage.jsx'
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      { index: true, element: <App /> },
-      { path: 'dash_board', element: <AdminDashBoard /> },
-      { path: 'add_new_cloth', element: <AddCloth /> },
-      { path: 'orders', element: <OdersDetails /> },
-      { path: 'update_cloth/:id', element: <UpdateCloth /> },
-      { path: 'home', element: <HomePage /> },
-      { path: 'all_cloth/:category', element: <AllCloth /> },
-      { path: 'all_cloths/:category/:type', element: <AllCloth /> },
-      { path: 'cart', element: <CartPage /> },
-      { path: 'checkout', element: <CheckOut /> },
-      { path: 'my_orders', element: <MyOrders /> },
-      { path: 'signup', element: <SignupPage /> },
-      { path: 'login', element: <LoginPage /> },
-      { path: "/contact", element: <ContactPage /> },
-      { path: "/blog", element: <BlogPage /> },
-      { path: "/blog/:id", element: <BlogDetailPage /> },
-    ],
-  },
+  { path: "/", element: <App /> },
+  { path: "/dash_board", element: <AdminDashBoard /> },
+  { path: "/add_new_cloth", element: <AddCloth /> },
+  { path: "/orders", element: <OdersDetails /> },
+  { path: "/update_cloth/:id", element: <UpdateCloth /> },
+  { path: "/home", element: <HomePage /> },
+  { path: "/all_cloth/:category", element: <AllCloth /> },
+  { path: "/all_cloths/:category/:type", element: <AllCloth /> },
+  { path: "/cart", element:<CartPage /> },
+  { path: "/checkout", element: <CheckOut /> },
+  { path: "/my_orders", element: <MyOrders /> },
+  { path: "/signup", element: <SignupPage /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/contact", element: <ContactPage /> },
+  { path: "/blog", element: <BlogPage /> },
+  { path: "/blog/:id", element: <BlogDetailPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
