@@ -20,6 +20,9 @@ import CheckOut from './components/checkout/CheckOut.jsx'
 import MyOrders from './pages/user/MyOrders.jsx'
 import SignupPage from './pages/SignupPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
+import BlogPage from './pages/BlogPage.jsx'
+import BlogDetailPage from './pages/BlogDetailPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,9 @@ const router = createBrowserRouter([
       { path: 'my_orders', element: <MyOrders /> },
       { path: 'signup', element: <SignupPage /> },
       { path: 'login', element: <LoginPage /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/blog", element: <BlogPage /> },
+      { path: "/blog/:id", element: <BlogDetailPage /> },
     ],
   },
 ]);
