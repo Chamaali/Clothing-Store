@@ -19,6 +19,7 @@ import CheckOut from './components/checkout/CheckOut.jsx'
 import MyOrders from './pages/user/MyOrders.jsx'
 import SignupPage from './pages/SignupPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
   { path: "/my_orders", element: <MyOrders /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/login", element: <LoginPage /> },
+  { path: "/contact", element: <ContactPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
