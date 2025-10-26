@@ -55,7 +55,7 @@ function NavBar() {
           <h3 className='text-xl font-semibold max-sm:text-lg'>SHOP</h3>
         </div>
       </Link>
-      <div className=' max-mdxl:hidden'>
+      <div className='hidden lg:block'>
         <ul className='flex gap-10'>
           <NavLink to='/home' className={({isActive}) => ( isActive ? activeLink : inActiveLink )}>
             <li>Home</li>
@@ -83,16 +83,16 @@ function NavBar() {
             <button className='px-2 py-1 text-white duration-300 bg-black rounded-md max-sm:text-sm hover:scale-95'>Login</button>
           </NavLink>
         }
-        <div className={`${isMenuOpen ? 'hidden' : 'p-1 border-2 rounded-full mdxl:hidden'}`} onClick={toggleMenu}>
+        <div className={`${isMenuOpen ? 'hidden' : 'p-1 border-2 rounded-full lg:hidden'}`} onClick={toggleMenu}>
           <IoIosMenu />
         </div>
-        <div className={`${isMenuOpen ? 'p-1 border-2 rounded-full mdxl:hidden' : 'hidden'}`} onClick={toggleMenu}>
+        <div className={`${isMenuOpen ? 'p-1 border-2 rounded-full lg:hidden' : 'hidden'}`} onClick={toggleMenu}>
           <IoMdClose />
         </div>
       </div>
       </div>
       <div>
-      <ul className={`${isMenuOpen ? ' translate-x-0 ' : 'translate-x-full ' } fixed right-0 duration-500  flex flex-col h-full gap-16 px-20 py-16 bg-white max-md:px-10 mdxl:hidden z-10`}>
+      <ul className={`${isMenuOpen ? ' translate-x-0 ' : 'translate-x-full ' } fixed right-0 duration-500  flex flex-col h-full gap-16 px-20 py-16 bg-white max-md:px-10 lg:hidden z-10`}>
         <NavLink to='/home' className={({isActive}) => ( isActive ? activeLink : inActiveLink )} onClick={toggleMenu}><li>Home</li></NavLink>
         <li onClick={toggleDropDown} className='flex items-center'>Shop <FaAngleDown/></li>
         <NavLink to='/blog' className={({isActive}) => ( isActive ? activeLink : inActiveLink )} onClick={toggleMenu}>
