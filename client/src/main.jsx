@@ -20,6 +20,8 @@ import MyOrders from './pages/user/MyOrders.jsx'
 import SignupPage from './pages/SignupPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
+import BlogPage from './pages/BlogPage.jsx'
+import BlogDetailPage from './pages/BlogDetailPage.jsx'
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -36,6 +38,8 @@ const router = createBrowserRouter([
   { path: "/signup", element: <SignupPage /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/contact", element: <ContactPage /> },
+  { path: "/blog", element: <BlogPage /> },
+  { path: "/blog/:id", element: <BlogDetailPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
