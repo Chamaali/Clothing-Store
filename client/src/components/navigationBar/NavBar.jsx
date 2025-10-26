@@ -61,8 +61,12 @@ function NavBar() {
             <li>Home</li>
           </NavLink>
           <li onClick={toggleDropDown} className='flex items-center cursor-pointer'>Shop <FaAngleDown/></li>
-          <li>Blog</li>
-          <li>Contact Us</li>
+          <NavLink to='/blog' className={({isActive}) => ( isActive ? activeLink : inActiveLink )}>
+            <li>Blog</li>
+          </NavLink>
+          <NavLink to='/contact' className={({isActive}) => ( isActive ? activeLink : inActiveLink )}>
+            <li>Contact Us</li>
+          </NavLink>
         </ul>
       </div>
       <div className='flex items-center gap-5 max-sm:gap-4'>
@@ -91,8 +95,12 @@ function NavBar() {
       <ul className={`${isMenuOpen ? ' translate-x-0 ' : 'translate-x-full ' } fixed right-0 duration-500  flex flex-col h-full gap-16 px-20 py-16 bg-white max-md:px-10 mdxl:hidden z-10`}>
         <NavLink to='/home' className={({isActive}) => ( isActive ? activeLink : inActiveLink )} onClick={toggleMenu}><li>Home</li></NavLink>
         <li onClick={toggleDropDown} className='flex items-center'>Shop <FaAngleDown/></li>
-        <li>Blog</li>
-        <li>Contact Us</li>
+        <NavLink to='/blog' className={({isActive}) => ( isActive ? activeLink : inActiveLink )} onClick={toggleMenu}>
+          <li>Blog</li>
+        </NavLink>
+        <NavLink to='/contact' className={({isActive}) => ( isActive ? activeLink : inActiveLink )} onClick={toggleMenu}>
+          <li>Contact Us</li>
+        </NavLink>
       </ul>
     </div>
     {isDropDownOpen  && <DropDownMenu toggleDropDown={toggleDropDown}/> }
