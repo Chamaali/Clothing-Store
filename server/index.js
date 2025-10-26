@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import cors from "cors";
 import { router as userRoutes } from './routes/userRoutes.js';
 import { router as adminRoutes } from './routes/adminRoutes.js';
+import { router as chatRoutes } from './routes/chatRoutes.js';
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(cookieParser());
 // ✅ 3. Mount routers (AFTER middleware)
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/chat', chatRoutes);
 
 const PORT = process.env.PORT || 5000;
 const URL = process.env.MONGODB_URI;

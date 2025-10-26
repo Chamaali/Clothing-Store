@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../../components/navigationBar/NavBar'
+// NavBar is provided by RootLayout
 import Footer from '../../components/footer/Footer'
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from 'react-router-dom'
@@ -19,15 +19,14 @@ function CartPage() {
   }
  
   if(isError || !cartItems.cartDetails){
-    return <>
-    <NavBar /> 
-    <div className=' h-[92vh] flex flex-col justify-between '>
-      <div className='flex items-center justify-center w-full h-full text-2xl'>
-        {error.data.message}
+    return (
+      <div className=' h-[92vh] flex flex-col justify-between '>
+        <div className='flex items-center justify-center w-full h-full text-2xl'>
+          {error.data.message}
+        </div>
+        <Footer />
       </div>
-      <Footer />
-      </div>
-    </>
+    )
   }
   
   const handleRemoveItem = async(id) =>{
@@ -47,7 +46,6 @@ function CartPage() {
   
   return (
     <>
-      <NavBar />
       <div className='flex flex-col justify-between min-h-[92vh]  gap-10'>
         <div className='relative flex flex-col items-center gap-8 px-10 py-10'>
           <h2 className='text-3xl font-semibold'>Cart</h2>

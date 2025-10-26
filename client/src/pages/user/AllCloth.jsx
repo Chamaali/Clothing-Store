@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NavBar from '../../components/navigationBar/NavBar'
+// NavBar is provided by RootLayout
 import { useParams } from 'react-router-dom'
 import ClothDetails from '../../components/cloth details/ClothDetails'
 import { useGetBuCategoryAndTypeQuery, useGetByCategoryUserQuery } from '../../store/api/userApi'
@@ -22,7 +22,6 @@ function AllCloth() {
   
   return (
     <div>
-      <NavBar />
       <div className='min-h-[92vh] px-10 py-10  max-md:px-5 bg-slate-50'>
    
         <div className='flex flex-wrap justify-center gap-10 max-md:justify-around max-lg:gap-5'>

@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "Clothing-Store Chat API",
+    "_postman_id": "a1b2c3d4-e5f6-4712-8910-abcdef123456",
+    "description": "Collection of requests to test the chat endpoint (/api/chat/send)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "KB Match - Shipping",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"message\": \"shipping information\" }"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/chat/send",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "5000",
+          "path": [ "api", "chat", "send" ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Expect a 200 and a source of 'kb' or a reply string",
+              "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Body has reply', function () { var json = pm.response.json(); pm.expect(json).to.have.property('reply'); });",
+              "pm.test('If KB match, source should be kb', function () { var json = pm.response.json(); if (json.source) { pm.expect(json.source).to.eql('kb'); } });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fallback reply (no GEMINI_API_KEY)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"message\": \"hello\" }" },
+        "url": { "raw": "http://localhost:5000/api/chat/send", "protocol": "http", "host": [ "localhost" ], "port": "5000", "path": [ "api", "chat", "send" ] }
+      },
+      "event": [ { "listen": "test", "script": { "exec": [ "pm.test('Status is 200', function () { pm.response.to.have.status(200); });", "pm.test('Reply present', function () { var json = pm.response.json(); pm.expect(json.reply).to.be.a('string'); });" ], "type": "text/javascript" } } ]
+    },
+    {
+      "name": "Invalid payload (missing message)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"text\": \"no message field\" }" },
+        "url": { "raw": "http://localhost:5000/api/chat/send", "protocol": "http", "host": [ "localhost" ], "port": "5000", "path": [ "api", "chat", "send" ] }
+      },
+      "event": [ { "listen": "test", "script": { "exec": [ "pm.test('Status is 400', function () { pm.response.to.have.status(400); });", "pm.test('Has error property', function () { var json = pm.response.json(); pm.expect(json).to.have.property('error'); });" ], "type": "text/javascript" } } ]
+    },
+    {
+      "name": "Server error simulation",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"message\": \"__trigger_server_error__\" }" },
+        "url": { "raw": "http://localhost:5000/api/chat/send", "protocol": "http", "host": [ "localhost" ], "port": "5000", "path": [ "api", "chat", "send" ] }
+      },
+      "event": [ { "listen": "test", "script": { "exec": [ "// This test expects either a 500 or a graceful fallback; assert the presence of error or reply key", "pm.test('Response has either error or reply', function () { var json = {}; try { json = pm.response.json(); } catch (e) { pm.expect(pm.response.code).to.be.oneOf([500,200]); return; } pm.expect(json).to.satisfy(function (obj) { return obj.hasOwnProperty('error') || obj.hasOwnProperty('reply'); }); });" ], "type": "text/javascript" } } ]
+    }
+  ]
+}

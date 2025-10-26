@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from '../components/navigationBar/NavBar';
+// NavBar is provided by RootLayout
 import { Link, useNavigate } from 'react-router-dom';
 import UserDetailsForm from '../components/user details form/UserDetailsForm';
 import { useSignupUserMutation } from '../store/api/userApi';
@@ -56,7 +56,6 @@ function SignupPage() {
 
   return (
     <>
-      <NavBar />
       <div className='flex flex-col gap-4 items-center justify-center w-full min-h-[92vh] '>
         <div className='min-w-[450px] border flex flex-col items-center p-5 gap-5 shadow-lg rounded-md max-sm:min-w-[360px] max-xsm:min-w-[300px]'>
           <h3 className='text-2xl font-semibold'>Signup</h3>

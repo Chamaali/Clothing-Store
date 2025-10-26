@@ -1,15 +1,12 @@
-import LandingPageBody from "./components/landing page/LandingPageBody"
-import NavBar from "./components/navigationBar/NavBar"
+import React from "react";
+import LandingPageBody from "./components/landing page/LandingPageBody";
 
 function App() {
-  
-
   return (
     <>
-     <NavBar />
-     <LandingPageBody />
+      <LandingPageBody />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

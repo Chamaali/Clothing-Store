@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../../components/navigationBar/NavBar'
+// NavBar is provided by RootLayout
 import Footer from '../../components/footer/Footer'
 import tsetImg from '../../assets/tshirt.webp';
 import { useGetOrderDetailsQuery } from '../../store/api/userApi';
@@ -15,7 +15,6 @@ function MyOrders() {
   console.log(orderData)
   return (
     <>
-    <NavBar />
       <div className='flex flex-col justify-between min-h-[92vh]  gap-10'>
         <div className='relative flex flex-col items-center gap-8 px-10 py-10'>
           <h2 className='text-3xl font-semibold'>My Orders</h2>
