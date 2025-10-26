@@ -25,7 +25,7 @@ function Footer() {
           <li>
             <div className='flex items-center gap-1'>
               <FiMail />
-              <p>avishkas97@gmail.com</p>
+              <p>avishka97@gmail.com</p>
             </div>
           </li>
           <li>
