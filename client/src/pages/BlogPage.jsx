@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/navigationBar/NavBar';
+import Footer from '../components/footer/Footer';
 
 function BlogPage() {
   const navigate = useNavigate();
@@ -133,6 +134,7 @@ function BlogPage() {
           </button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

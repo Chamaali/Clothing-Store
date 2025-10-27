@@ -48,11 +48,11 @@ function NavBar() {
   
   return (
     <>
-    <div className=' h-[8vh] flex justify-between items-center px-10  top-0  max-md:px-5 bg-white sticky z-10'>
+    <div className=' h-[12vh] flex justify-between items-center px-10  top-0  max-md:px-5 bg-white sticky z-10'>
       <Link to='/home'>
         <div className='flex items-center gap-1'>
           <FaShopify className='w-8 h-8 max-sm:w-6 max-sm:h-6'/>
-          <h3 className='text-xl font-semibold max-sm:text-lg'>SHOP</h3>
+          <h3 className='text-xl font-semibold max-sm:text-lg'>Svelte</h3>
         </div>
       </Link>
       <div className=' max-mdxl:hidden'>

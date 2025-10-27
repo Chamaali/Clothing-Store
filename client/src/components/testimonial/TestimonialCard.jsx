@@ -16,8 +16,8 @@ function TestimonialCard() {
       <div className='flex gap-3 mt-2'>
         <img src={testImg} alt="" className='object-cover w-10 h-10 rounded-full '/>
         <div>
-          <h3 className='text-sm font-semibold'>Leslie Alexander</h3>
-          <p className='text-xs '>Model</p>
+          <h3 className='text-sm font-semibold'>Jenny wilson</h3>
+          <p className='text-xs '>Fashion designer</p>
         </div>
       </div>
     </div>
