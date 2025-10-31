@@ -2,6 +2,7 @@ import React from 'react'
 import { FaShopify } from "react-icons/fa6";
 import { FiPhoneCall, FiMail  } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import LinksList from './LinksList';
 
 function Footer() {
@@ -12,33 +13,45 @@ function Footer() {
           <li>
             <div className='flex items-center gap-1'>
               <FaShopify className='w-8 h-8 max-sm:w-6 max-sm:h-6'/>
-              <h3 className='text-xl font-semibold max-sm:text-lg'>SHOP</h3>
+              <h3 className='text-xl font-semibold max-sm:text-lg'>Svelte</h3>
             </div>
           </li>
           <li>
             <div className='flex items-center gap-1'>
               <FiPhoneCall />
-              <p>+94 764009627</p>
+              <p>+1 (555) 123-4567</p>
             </div>
           </li>
           <li></li>
           <li>
             <div className='flex items-center gap-1'>
               <FiMail />
-              <p>avishkas97@gmail.com</p>
+              <p>support@clothingstore.com</p>
             </div>
           </li>
           <li>
             <div className='flex items-center gap-1'>
               <GrLocation />
-              <p>Bibilegama, Passara, Badulla</p>
+              <p>123 Fashion Street, Style City</p>
             </div>
           </li>
           <li></li>
         </ul>
-        <LinksList title='Information' allLinks={['My Account', 'Login', 'My Cart', 'My Wishlist', 'Checkout']}/>
-        <LinksList title='Service' allLinks={['About Us', 'Careers', 'Delivery Information', 'Privacy Policy', 'Terms & Conditions']}/>
-        <LinksList title='Subscribe' allLinks={['Enter your email below to the first to know about new collections and product launches.']} emailField/>
+
+        <LinksList title='Shop by' allLinks={['Women', 'Men', 'Kids']}/>
+        <LinksList title='Information' allLinks={['Contact us', 'Delivery Information', 'Privacy Policy', 'Terms & Conditions']}/>
+
+        {/* Social Media Section */}
+        <ul className='flex flex-col gap-3'>
+          <h3 className='text-lg font-semibold'>Follow Us</h3>
+          <div className='flex gap-4 text-lg'>
+            <FaFacebookF className='cursor-pointer hover:text-blue-400'/>
+            <FaInstagram className='cursor-pointer hover:text-pink-500'/>
+            <FaTwitter className='cursor-pointer hover:text-blue-300'/>
+            <FaYoutube className='cursor-pointer hover:text-red-500'/>
+          </div>
+        </ul>
+
       </div>
       <hr className='border-gray-300'></hr>
       <div className='text-sm text-center '>

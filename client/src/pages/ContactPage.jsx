@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/navigationBar/NavBar';
 import ContactForm from '../components/contact form/ContactForm';
+import Footer from '../components/footer/Footer';
 
 function ContactPage() {
   return (
@@ -56,6 +57,7 @@ function ContactPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
