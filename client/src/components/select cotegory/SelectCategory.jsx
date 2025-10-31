@@ -19,7 +19,7 @@ function SelectCategory() {
             />
             <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full duration-500 bg-black bg-opacity-0 rounded-md group-hover:bg-opacity-35'>
               <Link
-                to={`/all_cloth/${select.btnText}`}
+                to={`/all_cloths/${select.endpoint}`}
                 className='flex items-center justify-center w-full h-full'
               >
                 <button className='px-5 py-1 bg-white rounded-md'>{select.btnText}</button>

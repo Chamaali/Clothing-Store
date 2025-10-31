@@ -65,7 +65,7 @@ function LoginPage() {
         </div>
         <Link to='/signup'>
           <p className='text-base '>
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <button className='text-base font-bold text-buttonColor'>Signup</button>
           </p>
         </Link>

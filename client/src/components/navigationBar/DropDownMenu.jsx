@@ -8,19 +8,19 @@ function DropDownMenu({toggleDropDown}) {
       <ul className='flex flex-col gap-4'>
         <li className='font-semibold '>Men</li>
         {['T-Shirt', 'Casual Shirt', 'Formal Shirt', 'Jackets'].map((category, index)=>(
-          <Link key={index} to={`/all_cloths/Men/${category}`}><li>{category}</li></Link>
+          <Link key={index} to={`/all_cloths/men/${category}`}><li>{category}</li></Link>
         ))}
       </ul>
       <ul className='flex flex-col gap-4'>
         <li className='font-semibold '>Women</li>
-        {['Saree', 'lehenga', 'Jackets'].map((category, index)=>(
-          <Link key={index} to={`/all_cloths/Women/${category}`}><li>{category}</li></Link>
+        {['saree', 'lehenga', 'jackets'].map((category, index)=>(
+          <Link key={index} to={`/all_cloths/women/${category}`}><li>{category}</li></Link>
         ))}
       </ul>
       <ul className='flex flex-col gap-4'>
         <li className='font-semibold '>Kids</li>
         {['T-Shirt', 'Shirt', 'Jeans'].map((category, index)=>(
-          <Link key={index} to={`/all_cloths/Kids/${category}`}><li>{category}</li></Link>
+          <Link key={index} to={`/all_cloths/kids/${category}`}><li>{category}</li></Link>
         ))}
       </ul>
       </div>

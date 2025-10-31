@@ -6,16 +6,16 @@ export const selectData = [
     {
         image : menImg,
         btnText : 'Men',
-        linkUrl: ''
+        endpoint: 'men'
     },
     {
         image : womenImg,
         btnText : 'Women',
-        linkUrl: ''
+        endpoint: 'women'
     },
     {
         image : kidImg,
         btnText : 'Kids',
-        linkUrl: ''
+        endpoint: 'kids'
     }
 ]
