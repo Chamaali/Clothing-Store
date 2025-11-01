@@ -131,7 +131,7 @@ function NavBar() {
           {/*  Mobile dropdown */}
           {isDropDownOpen && (
             <div className='mt-3 pl-4'>
-              <DropDownMenu toggleDropDown={toggleDropDown}/>
+              <DropDownMenu toggleDropDown={toggleDropDown} closeMenu={() => setIsMenuOpen(false)} />
             </div>
           )}
         </li>
